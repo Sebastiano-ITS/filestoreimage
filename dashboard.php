@@ -123,10 +123,8 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 </head>
 <body>
   <!-- Navbar -->
-  <div class="navbar">
-    <h1>Dashboard</h1>
-    <a class="logout-btn" href="logout.php">Disconetti</a>
-  </div>
+    <!-- Navbar -->
+    <?php include 'navbarHome.php'; ?>
 
   <!-- Contenuto -->
   <div class="container">

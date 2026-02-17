@@ -44,7 +44,6 @@ if (isset($_POST["submit"]) && isset($_FILES["files"])) {
         // Spostamento file
         if (move_uploaded_file($tmp_name, $target_file)) {
 
-            // Salvataggio nel DB COMPRENSIVO DI user_id
             $stmt = $conn->prepare("
                 INSERT INTO files (user_id, nome_file, nome_salvato, tipo_file)
                 VALUES (?, ?, ?, ?)
@@ -64,6 +63,7 @@ if (isset($_POST["submit"]) && isset($_FILES["files"])) {
         }
     }
 
+
     $conn->close();
 
     // Redirect alla pagina download con messaggi
@@ -74,5 +74,15 @@ if (isset($_POST["submit"]) && isset($_FILES["files"])) {
 
     header("Location: download.php?$query");
     exit;
+
+    // Aggiorna il contatore dei file caricati
+$update = $conn->prepare("
+    INSERT INTO user_stats (user_id, file_count)
+    VALUES (?, 1)
+    ON DUPLICATE KEY UPDATE file_count = file_count + 1
+");
+$update->bind_param("i", $_SESSION["id"]);
+$update->execute();
+$update->close();
 }
 ?>

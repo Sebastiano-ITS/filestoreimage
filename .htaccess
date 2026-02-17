@@ -1,0 +1,4 @@
+Options -Indexes
+
+# Reindirizza automaticamente alla tua pagina 404
+ErrorDocument 404 /filestoreimage/404.html
