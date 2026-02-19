@@ -119,6 +119,70 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
       background: linear-gradient(135deg, #4f46e5, #2563eb);
       transform: translateY(-2px);
     }
+
+
+        /* BOX CON I PULSANTI */
+    .password-box {
+        background: #ffffff;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        margin: 20px auto;
+        max-width: 450px;
+        text-align: center;
+    }
+
+    .password-box h3 {
+        margin-bottom: 20px;
+        font-size: 22px;
+        color: #333;
+    }
+
+    .password-actions {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    /* BOTTONI */
+    .pw-btn {
+        text-decoration: none;
+        padding: 12px 18px;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition: 0.25s;
+        color: #fff;
+    }
+
+    /* NUOVA PASSWORD */
+    .pw-btn.add {
+        background: #28a745;
+    }
+
+    .pw-btn.add:hover {
+        background: #218838;
+    }
+
+    /* VISUALIZZA PASSWORD */
+    .pw-btn.view {
+        background: #007bff;
+    }
+
+    .pw-btn.view:hover {
+        background: #0069d9;
+    }
+
+    /* MOBILE RESPONSIVE */
+    @media(max-width: 480px) {
+        .password-actions {
+            flex-direction: column;
+        }
+    }
+
   </style>
 </head>
 <body>
@@ -142,6 +206,21 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
         <h2>Visualizza & Scarica</h2>
         <p>Accedi ai file caricati e scaricali quando vuoi.</p>
         <a href="download.php">Vai</a>
+      </div>
+
+      <!-- Contenitore Password Manager -->
+      <div class="password-box">
+          <h3>Gestione Password</h3>
+
+          <div class="password-actions">
+              <a href="password_add.php" class="pw-btn add">
+                  <i class="fas fa-plus"></i> Nuova Password
+              </a>
+
+              <a href="password_view.php" class="pw-btn view">
+                  <i class="fas fa-eye"></i> Visualizza Password
+              </a>
+          </div>
       </div>
     </div>
   </div>

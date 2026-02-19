@@ -19,5 +19,8 @@ if ($conn->connect_error) {
     die("Connessione al database fallita: " . $conn->connect_error);
 }
 
+define("ENCRYPT_KEY", "metti_qui_una_chiave_lunga_e_casuale_32_char");
+
+
 
 ?>
